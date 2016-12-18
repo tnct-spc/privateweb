@@ -1,6 +1,10 @@
 # PrivateWeb
 部室内ウェブサイト。
 
+##すでにphpの実行環境がある人
+1. おわり
+
+##ない人
 ### 動かし方(Mac, Windows)
 1. [docker](https://www.docker.com/products/docker-toolbox)(Docker Toolbox)をダウンロード
 1. 雰囲気でインストール
