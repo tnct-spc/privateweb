@@ -6,9 +6,14 @@ class Template
 	{
 		$this->tmpl_file_path = $tmpl_file_path;
 	}
-    public function show()
-    {
-        extract((array)$this);
-        include($this->tmpl_file_path.'.php');
-    }
+	public function show()
+	{
+		extract((array)$this);
+		include(dirname(__FILE__).'/'.$this->tmpl_file_path.'.php');
+	}
+	public function run()
+	{
+		show();
+		exit();
+	}
 }
