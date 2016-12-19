@@ -62,7 +62,7 @@ $password = password_hash($raw_password, PASSWORD_DEFAULT);
 
 
 $pdo = new PDO(
-	'mysql:dbname=app;host=mysql;charset=utf8mb4',
+	'mysql:dbname='.$setting['sql']['table'].';host=mysql;charset=utf8mb4',
 	$setting['sql']['username'],
 	$setting['sql']['password'],
 	[]
