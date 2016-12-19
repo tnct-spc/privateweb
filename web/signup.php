@@ -125,10 +125,9 @@ mb_language("Japanese");
 mb_internal_encoding("UTF-8");
 $to      = $mail;
 $subject = '部室Webユーザー本登録メール';
-$message = $setting['system']['address'].'/signupcheck.php?mail='.urlencode($mail).'&checkstring='.$checkstring.'\nにアクセスして登録を完了してください。';
-$headers = 'From: tnct@hoge.jp' . "\r\n";
+$message = $setting['system']['global_address'].'/signupcheck.php?mail='.urlencode($mail).'&checkstring='.$checkstring."\r\n".'にアクセスして登録を完了してください。';
+$headers = 'From: nittc.spc@gmail.com'.'\r\n';
 mb_send_mail($to, $subject, $message, $headers);
-echo $message;
 
 $tmpl_pleasecheckemail = new Template('signup/please_check_email');
 $tmpl_pleasecheckemail->mail = $mail;
