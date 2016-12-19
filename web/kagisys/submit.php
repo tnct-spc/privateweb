@@ -8,7 +8,7 @@ $mail = require_basic_auth();
 
 //sql insert 登録
 $pdo = new PDO(
-	'mysql:dbname='.$setting['sql']['table'].';host=mysql;charset=utf8mb4',
+	'mysql:dbname='.$setting['sql']['table'].';host='.$setting['sql']['address'].';charset=utf8mb4',
 	$setting['sql']['username'],
 	$setting['sql']['password'],
 	[]

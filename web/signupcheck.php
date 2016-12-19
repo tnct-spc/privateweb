@@ -14,7 +14,7 @@ $mail = urldecode((string)filter_input(INPUT_GET, 'mail'));
 $checkstring = (string)filter_input(INPUT_GET, 'checkstring');
 
 $pdo = new PDO(
-	'mysql:dbname='.$setting['sql']['table'].';host=mysql;charset=utf8mb4',
+	'mysql:dbname='.$setting['sql']['table'].';host='.$setting['sql']['address'].';charset=utf8mb4',
 	$setting['sql']['username'],
 	$setting['sql']['password'],
 	[]

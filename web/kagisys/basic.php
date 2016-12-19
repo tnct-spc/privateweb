@@ -13,7 +13,7 @@ function check_account($mail, $password)
 {
 	$setting = parse_ini_file($_SERVER['DOCUMENT_ROOT'].'/setting.ini',true);
 	$pdo = new PDO(
-		'mysql:dbname='.$setting['sql']['table'].';host=mysql;charset=utf8mb4',
+		'mysql:dbname='.$setting['sql']['table'].';host='.$setting['sql']['address'].';charset=utf8mb4',
 		$setting['sql']['username'],
 		$setting['sql']['password'],
 		[]
