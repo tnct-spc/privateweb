@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: 2016 年 12 月 19 日 08:34
+-- Generation Time: 2016 年 12 月 19 日 08:44
 -- サーバのバージョン： 5.7.17
 -- PHP Version: 5.6.26
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
-  `mail` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nickname` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `autority` enum('guest','member','manager','admin') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'guest',
   `isvalid` tinyint(1) NOT NULL DEFAULT '0',
   `checkstring` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
@@ -62,7 +62,8 @@ CREATE TABLE `nfctag` (
 --
 
 CREATE TABLE `touchedlog` (
-  `IDm` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `IDm` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `timestamp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -70,8 +71,8 @@ CREATE TABLE `touchedlog` (
 -- テーブルのデータのダンプ `touchedlog`
 --
 
-INSERT INTO `touchedlog` (`IDm`, `timestamp`) VALUES
-('01010214E014EE21', 1481262982);
+INSERT INTO `touchedlog` (`id`, `IDm`, `timestamp`) VALUES
+(1, '01010214E014EE21', 1481262982);
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,7 @@ INSERT INTO `touchedlog` (`IDm`, `timestamp`) VALUES
 
 CREATE TABLE `whitelist` (
   `id` int(11) NOT NULL,
-  `mail` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+  `mail` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -109,6 +110,12 @@ ALTER TABLE `nfctag`
   ADD PRIMARY KEY (`IDm`);
 
 --
+-- Indexes for table `touchedlog`
+--
+ALTER TABLE `touchedlog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `whitelist`
 --
 ALTER TABLE `whitelist`
@@ -124,6 +131,11 @@ ALTER TABLE `whitelist`
 --
 ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `touchedlog`
+--
+ALTER TABLE `touchedlog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `whitelist`
 --
