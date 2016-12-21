@@ -13,8 +13,9 @@
 		<form id="signup" action="login.php" method="post">
 			メールアドレス<input type="mail" name="mail" value="<?php echo $last_mail ?>" placeholder="サイボウズに登録されているアドレス"><br>
 			パスワード<input id="password" type="password" name="password" placeholder="英数字8〜16文字"><br>
-			<button type="submit">登録</button>
+			<button type="submit">ログイン</button>
 		</form>
+		<a href="../kagisys_old/">旧BASIC認証版はこちら</a><br>
 		<script type="text/javascript" charset="utf-8">
 			$('#signup').submit(function(){
 				// パスワードをsha256でハッシュにする

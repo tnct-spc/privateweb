@@ -21,7 +21,10 @@ if(check_account($mail, $raw_password)){
 	$_SESSION['password'] = $raw_password;
 	header('Location: /kagisys/index.php');
 }else{
-	exit('fail login.');
+	?>
+		fail login.<br>
+		<a href="index.php">戻る</a>
+	<?php
 }
 
 

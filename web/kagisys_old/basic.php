@@ -33,16 +33,16 @@ function check_account($mail, $password)
 
 function require_basic_auth()
 {
-	session_start();
-	if(!isset($_SESSION['username']) || !isset($_SESSION['password'])){
-		header('Location: /kagisys/loginpage.php');
-	}
-	if(check_account($_SESSION['username'],$_SESSION['password'])){
-		return $_SESSION['username'];
-	}else{
-		echo '<a href="./logout.php">ログアウト</a><br>';
-		exit('login failure');
-	}
+	// 初期アクセス時はBASIC認証に飛ばす
+	if (!(isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']))) start_basic();
+
+	// メールアドレスとパスワードの取得
+	$mail = $_SERVER['PHP_AUTH_USER'];
+	$password = $_SERVER['PHP_AUTH_PW'];
+
+	if(!check_account($mail, $password)) start_basic();
+
+	return $mail;
 }
 
 /**
