@@ -11,6 +11,7 @@ services:
       - MYSQL_PASSWORD=5ciuk1sy
     volumes:
       - db:/var/lib/mysql
+    restart: unless-stopped
   php:
     build: ./system/php
     container_name: privateweb-php
@@ -20,6 +21,7 @@ services:
       - ./web:/var/www/html
     links:
       - mysql
+    restart: unless-stopped
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: privateweb-phpmyadmin
@@ -31,5 +33,6 @@ services:
       - /sessions
     links:
       - mysql
+    restart: unless-stopped
 volumes:
   db:
