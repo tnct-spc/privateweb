@@ -104,9 +104,9 @@ $is_account_find = isset($result_fetched['isvalid']) ? true : false;
 
 // 仮登録
 if($is_account_find){
-	$stmt = $pdo->prepare('UPDATE accounts SET username=:username,nickname=:nickname,password=:password,checkstring=:checkstring WHERE mail=:mail');
+	$stmt = $pdo->prepare('UPDATE accounts SET username=:username,nickname=:nickname,password=:password,checkstring=:checkstring,autority=\'member\' WHERE mail=:mail');
 }else{
-	$stmt = $pdo->prepare('INSERT INTO accounts (mail,username,nickname,password,checkstring) VALUES(:mail,:username,:nickname,:password,:checkstring)');
+	$stmt = $pdo->prepare('INSERT INTO accounts (mail,username,nickname,password,checkstring,autority) VALUES(:mail,:username,:nickname,:password,:checkstring,\'member\')');
 }
 $stmt->bindValue(':mail', $mail);
 $stmt->bindValue(':username', $username);
