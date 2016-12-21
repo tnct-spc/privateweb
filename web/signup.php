@@ -53,6 +53,9 @@ if(!is_valid_mail($mail) ||
 	){
 	$tmpl_signup = new Template('signup/form');
 	$tmpl_signup->errormessage = '書式が間違っています。';
+	$tmpl_signup->last_mail = htmlspecialchars($mail);
+	$tmpl_signup->last_username = htmlspecialchars($username);
+	$tmpl_signup->last_nickname = htmlspecialchars($nickname);
 	$tmpl_signup->show();
 	exit();
 }
@@ -80,6 +83,9 @@ if(!isset($result_fetched['COUNT(*)']) ||
    $result_fetched['COUNT(*)'] !== '1'){
 	$tmpl_signup = new Template('signup/form');
 	$tmpl_signup->errormessage = 'このメールアドレスはホワイトリストに登録されていません。';
+	$tmpl_signup->last_mail = htmlspecialchars($mail);
+	$tmpl_signup->last_username = htmlspecialchars($username);
+	$tmpl_signup->last_nickname = htmlspecialchars($nickname);
 	$tmpl_signup->show();
 	exit();
 }
@@ -97,6 +103,9 @@ if($result === false){
 if(isset($result_fetched['isvalid']) && $result_fetched['isvalid'] == 1){
 	$tmpl_signup = new Template('signup/form');
 	$tmpl_signup->errormessage = 'このメールアドレスは既に登録されています。';
+	$tmpl_signup->last_mail = htmlspecialchars($mail);
+	$tmpl_signup->last_username = htmlspecialchars($username);
+	$tmpl_signup->last_nickname = htmlspecialchars($nickname);
 	$tmpl_signup->show();
 	exit();
 }
