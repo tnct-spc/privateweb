@@ -28,14 +28,14 @@ function is_valid_password($raw_password){
 
 $setting = parse_ini_file('setting.ini',true);
 
-// 400 check
+// POSTが来ていなかったら登録フォームを表示
 if(!isset($_POST['mail']) ||
    !isset($_POST['username']) ||
    !isset($_POST['nickname']) ||
    !isset($_POST['password'])
 	){
-	$tmpl = new Template('400');
-	$tmpl->show();
+	$tmpl_signup = new Template('signup/form');
+	$tmpl_signup->show();
 	exit();
 }
 
